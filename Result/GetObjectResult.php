@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace WorkingTitle\Aws\S3;
+namespace WorkingTitle\Aws\S3\Result;
 
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
