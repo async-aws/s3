@@ -1,0 +1,34 @@
+{
+    "name": "async-aws/s3",
+    "type": "library",
+    "description": "Async AWS S3 client.",
+    "keywords": [
+        "aws",
+        "s3"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.2.5",
+        "ext-SimpleXML": "*",
+        "ext-dom": "*",
+        "ext-filter": "*",
+        "ext-hash": "*",
+        "async-aws/core": "^0.3",
+        "symfony/http-client-contracts": "^1.0 || ^2.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.2-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "AsyncAws\\S3\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AsyncAws\\S3\\Tests\\": "tests/"
+        }
+    }
+}
