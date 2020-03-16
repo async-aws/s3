@@ -1,6 +1,6 @@
 <?php
 
-namespace AsyncAws\S3\Input;
+namespace AsyncAws\S3\ValueObject;
 
 use AsyncAws\Core\Exception\InvalidArgument;
 use AsyncAws\S3\Enum\BucketLocationConstraint;
@@ -10,17 +10,15 @@ class CreateBucketConfiguration
     /**
      * Specifies the Region where the bucket will be created. If you don't specify a Region, the bucket is created in the US
      * East (N. Virginia) Region (us-east-1).
-     *
-     * @var BucketLocationConstraint::*|null
      */
     private $LocationConstraint;
 
     /**
      * @param array{
-     *   LocationConstraint?: \AsyncAws\S3\Enum\BucketLocationConstraint::*,
+     *   LocationConstraint?: null|\AsyncAws\S3\Enum\BucketLocationConstraint::*,
      * } $input
      */
-    public function __construct(array $input = [])
+    public function __construct(array $input)
     {
         $this->LocationConstraint = $input['LocationConstraint'] ?? null;
     }
@@ -36,16 +34,6 @@ class CreateBucketConfiguration
     public function getLocationConstraint(): ?string
     {
         return $this->LocationConstraint;
-    }
-
-    /**
-     * @param BucketLocationConstraint::*|null $value
-     */
-    public function setLocationConstraint(?string $value): self
-    {
-        $this->LocationConstraint = $value;
-
-        return $this;
     }
 
     public function validate(): void

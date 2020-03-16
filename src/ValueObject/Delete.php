@@ -1,29 +1,23 @@
 <?php
 
-namespace AsyncAws\S3\Input;
+namespace AsyncAws\S3\ValueObject;
 
 class Delete
 {
     /**
      * The objects to delete.
-     *
-     * @required
-     *
-     * @var ObjectIdentifier[]
      */
     private $Objects;
 
     /**
      * Element to enable quiet mode for the request. When you add this element, you must set its value to true.
-     *
-     * @var bool|null
      */
     private $Quiet;
 
     /**
      * @param array{
-     *   Objects: \AsyncAws\S3\Input\ObjectIdentifier[],
-     *   Quiet?: bool,
+     *   Objects: \AsyncAws\S3\ValueObject\ObjectIdentifier[],
+     *   Quiet?: null|bool,
      * } $input
      */
     public function __construct(array $input)
@@ -48,23 +42,6 @@ class Delete
     public function getQuiet(): ?bool
     {
         return $this->Quiet;
-    }
-
-    /**
-     * @param ObjectIdentifier[] $value
-     */
-    public function setObjects(array $value): self
-    {
-        $this->Objects = $value;
-
-        return $this;
-    }
-
-    public function setQuiet(?bool $value): self
-    {
-        $this->Quiet = $value;
-
-        return $this;
     }
 
     public function validate(): void

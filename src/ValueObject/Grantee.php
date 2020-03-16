@@ -1,6 +1,6 @@
 <?php
 
-namespace AsyncAws\S3\Input;
+namespace AsyncAws\S3\ValueObject;
 
 use AsyncAws\Core\Exception\InvalidArgument;
 use AsyncAws\S3\Enum\Type;
@@ -9,48 +9,36 @@ class Grantee
 {
     /**
      * Screen name of the grantee.
-     *
-     * @var string|null
      */
     private $DisplayName;
 
     /**
      * Email address of the grantee.
-     *
-     * @var string|null
      */
     private $EmailAddress;
 
     /**
      * The canonical user ID of the grantee.
-     *
-     * @var string|null
      */
     private $ID;
 
     /**
      * Type of grantee.
-     *
-     * @required
-     *
-     * @var Type::*|null
      */
     private $Type;
 
     /**
      * URI of the grantee group.
-     *
-     * @var string|null
      */
     private $URI;
 
     /**
      * @param array{
-     *   DisplayName?: string,
-     *   EmailAddress?: string,
-     *   ID?: string,
+     *   DisplayName?: null|string,
+     *   EmailAddress?: null|string,
+     *   ID?: null|string,
      *   Type: \AsyncAws\S3\Enum\Type::*,
-     *   URI?: string,
+     *   URI?: null|string,
      * } $input
      */
     public function __construct(array $input)
@@ -83,9 +71,9 @@ class Grantee
     }
 
     /**
-     * @return Type::*|null
+     * @return Type::*
      */
-    public function getType(): ?string
+    public function getType(): string
     {
         return $this->Type;
     }
@@ -93,44 +81,6 @@ class Grantee
     public function getURI(): ?string
     {
         return $this->URI;
-    }
-
-    public function setDisplayName(?string $value): self
-    {
-        $this->DisplayName = $value;
-
-        return $this;
-    }
-
-    public function setEmailAddress(?string $value): self
-    {
-        $this->EmailAddress = $value;
-
-        return $this;
-    }
-
-    public function setID(?string $value): self
-    {
-        $this->ID = $value;
-
-        return $this;
-    }
-
-    /**
-     * @param Type::*|null $value
-     */
-    public function setType(?string $value): self
-    {
-        $this->Type = $value;
-
-        return $this;
-    }
-
-    public function setURI(?string $value): self
-    {
-        $this->URI = $value;
-
-        return $this;
     }
 
     public function validate(): void

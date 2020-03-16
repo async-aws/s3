@@ -1,23 +1,29 @@
 <?php
 
-namespace AsyncAws\S3\Result;
+namespace AsyncAws\S3\ValueObject;
 
 class Owner
 {
+    /**
+     * Container for the display name of the owner.
+     */
     private $DisplayName;
 
+    /**
+     * Container for the ID of the owner.
+     */
     private $ID;
 
     /**
      * @param array{
-     *   DisplayName: null|string,
-     *   ID: null|string,
+     *   DisplayName?: null|string,
+     *   ID?: null|string,
      * } $input
      */
     public function __construct(array $input)
     {
-        $this->DisplayName = $input['DisplayName'];
-        $this->ID = $input['ID'];
+        $this->DisplayName = $input['DisplayName'] ?? null;
+        $this->ID = $input['ID'] ?? null;
     }
 
     public static function create($input): self
@@ -25,19 +31,18 @@ class Owner
         return $input instanceof self ? $input : new self($input);
     }
 
-    /**
-     * Container for the display name of the owner.
-     */
     public function getDisplayName(): ?string
     {
         return $this->DisplayName;
     }
 
-    /**
-     * Container for the ID of the owner.
-     */
     public function getID(): ?string
     {
         return $this->ID;
+    }
+
+    public function validate(): void
+    {
+        // There are no required properties
     }
 }

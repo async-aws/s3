@@ -1,30 +1,26 @@
 <?php
 
-namespace AsyncAws\S3\Input;
+namespace AsyncAws\S3\ValueObject;
 
 class AccessControlPolicy
 {
     /**
      * A list of grants.
-     *
-     * @var Grant[]
      */
     private $Grants;
 
     /**
      * Container for the bucket owner's display name and ID.
-     *
-     * @var Owner|null
      */
     private $Owner;
 
     /**
      * @param array{
-     *   Grants?: \AsyncAws\S3\Input\Grant[],
-     *   Owner?: \AsyncAws\S3\Input\Owner|array,
+     *   Grants?: null|\AsyncAws\S3\ValueObject\Grant[],
+     *   Owner?: null|\AsyncAws\S3\ValueObject\Owner|array,
      * } $input
      */
-    public function __construct(array $input = [])
+    public function __construct(array $input)
     {
         $this->Grants = array_map(function ($item) { return Grant::create($item); }, $input['Grants'] ?? []);
         $this->Owner = isset($input['Owner']) ? Owner::create($input['Owner']) : null;
@@ -46,23 +42,6 @@ class AccessControlPolicy
     public function getOwner(): ?Owner
     {
         return $this->Owner;
-    }
-
-    /**
-     * @param Grant[] $value
-     */
-    public function setGrants(array $value): self
-    {
-        $this->Grants = $value;
-
-        return $this;
-    }
-
-    public function setOwner(?Owner $value): self
-    {
-        $this->Owner = $value;
-
-        return $this;
     }
 
     public function validate(): void
