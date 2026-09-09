@@ -2,6 +2,8 @@
 
 ## NOT RELEASED
 
+## 3.5.0
+
 ### Added
 
 - AWS api-change: AWS Backup now lets you create read-only access points for Amazon S3 recovery points, enabling you to access backup data using S3 APIs without initiating a restore.
